@@ -1,12 +1,9 @@
-import "./App.css";
-import Nav from "./components/Nav";
-import Side from "./components/Side";
-import Map from "./components/Map";
+import Maps from "./components/Maps";
 
 function App() {
   return (
     <div className='App'>
-      <Nav />
+      <Maps />
     </div>
   );
 }
