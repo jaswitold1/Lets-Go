@@ -1,0 +1,24 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  .navi {
+    height: 20vh;
+    background-color: aqua;
+    .upper {
+      height: 50%;
+      display: flex;
+      justify-content: space-between;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .sidebar {
+    flex: 1;
+    background-color: red;
+  }
+  .maps {
+    flex: 1;
+    background-color: indigo;
+  }
+}
