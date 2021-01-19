@@ -1,4 +1,9 @@
 .maps {
   height: 53vh;
   background-color: lightcoral;
+  position: fixed;
+  width: 100%;
+  top: 12vh;
+  left: 0;
+  z-index: -1;
 }
