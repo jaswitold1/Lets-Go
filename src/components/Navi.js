@@ -1,5 +1,5 @@
 import React from "react";
-import Hamburger from "./Hamburger";
+
 import logo from "../assets/logo.jpg";
 
 function Navi() {

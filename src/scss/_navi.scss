@@ -1,12 +1,24 @@
-.navi {
-  height: 12vh;
-  background-color: aqua;
-
-  .upperNavi {
-    height: 100%;
-
-    img {
+.hamburgerMenu {
+  width: 10px;
+  height: 100vh;
+  background-color: lime;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  .navi {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12vh;
+    background-color: aqua;
+    z-index: -1;
+    .upperNavi {
       height: 100%;
+      img {
+        height: 100%;
+      }
     }
   }
 }

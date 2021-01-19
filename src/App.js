@@ -5,14 +5,14 @@ import "./scss/main.scss";
 
 function App() {
   return (
-    <div className='App'>
-      <div className='hamburgerMenu'>klklk</div>
-      <div className='main'>
+    <>
+      <div className='hamburgerMenu'></div>
+      <div className='App'>
         <Navi />
         <Maps />
         <Sidebar />
       </div>
-    </div>
+    </>
   );
 }
 
