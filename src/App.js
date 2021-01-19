@@ -5,10 +5,10 @@ import "./scss/main.scss";
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App' style={{}}>
       <Navi />
-      <Sidebar />
       <Maps />
+      <Sidebar />
     </div>
   );
 }
