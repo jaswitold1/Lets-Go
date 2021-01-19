@@ -3,7 +3,12 @@
   flex-direction: column;
   .navi {
     height: 12vh;
+    width: 100%;
     background-color: aqua;
+    position: fixed;
+    top: 0;
+    left: 0;
+
     .upperNavi {
       height: 100%;
       display: flex;
@@ -12,17 +17,5 @@
         height: 100%;
       }
     }
-  }
-  .sidebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 35vh;
-    width: 100%;
-    background-color: red;
-  }
-  .maps {
-    height: 53vh;
-    background-color: indigo;
   }
 }
