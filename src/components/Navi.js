@@ -5,12 +5,11 @@ import logo from "../assets/logo.jpg";
 function Navi() {
   return (
     <div className='navi'>
-      <div className='upper'>
-        <Hamburger className='hamburger' />
+      <div className='upperNavi'>
+        <Hamburger />
         <img alt='logo' src={logo} />
         <div></div>
       </div>
-      <div className='lower'></div>
     </div>
   );
 }
