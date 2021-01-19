@@ -5,10 +5,13 @@ import "./scss/main.scss";
 
 function App() {
   return (
-    <div className='App' style={{}}>
-      <Navi />
-      <Maps />
-      <Sidebar />
+    <div className='App'>
+      <div className='hamburgerMenu'>klklk</div>
+      <div className='main'>
+        <Navi />
+        <Maps />
+        <Sidebar />
+      </div>
     </div>
   );
 }

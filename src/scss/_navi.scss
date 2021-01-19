@@ -1,21 +1,12 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  .navi {
-    height: 12vh;
-    width: 100%;
-    background-color: aqua;
-    position: fixed;
-    top: 0;
-    left: 0;
+.navi {
+  height: 12vh;
+  background-color: aqua;
 
-    .upperNavi {
+  .upperNavi {
+    height: 100%;
+
+    img {
       height: 100%;
-      display: flex;
-      justify-content: space-between;
-      img {
-        height: 100%;
-      }
     }
   }
 }

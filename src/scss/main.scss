@@ -2,3 +2,16 @@
 @import "navi";
 @import "maps";
 @import "sidebar";
+
+.App {
+  display: flex;
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+  .hamburgerMenu {
+    height: 100vh;
+    background-color: lawngreen;
+  }
+}

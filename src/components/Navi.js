@@ -6,9 +6,9 @@ function Navi() {
   return (
     <div className='navi'>
       <div className='upperNavi'>
-        <Hamburger />
-        <img alt='logo' src={logo} />
         <div></div>
+        <img alt='logo' src={logo} />
+        <button>k</button>
       </div>
     </div>
   );
