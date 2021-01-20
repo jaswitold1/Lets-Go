@@ -1,11 +1,13 @@
 .hamburgerMenu {
-  width: 10px;
+  width: 0;
   height: 100vh;
   background-color: lime;
   position: fixed;
   top: 0;
   left: 0;
+  transition: 1s;
 }
+//sidebar and maps not active so doesnt need z index
 .App {
   display: flex;
   flex-direction: column;
@@ -24,6 +26,12 @@
 
       img {
         height: 100%;
+      }
+      .hamburger:focus {
+        outline: none;
+      }
+      .balanceSpaceBetween {
+        width: 70px;
       }
     }
   }

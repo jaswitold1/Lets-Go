@@ -10,11 +10,11 @@ function Navi() {
   return (
     <div className='navi'>
       <div className='upperNavi'>
-        <div></div>
+        <div className='balanceSpaceBetween'></div>
         <img alt='logo' src={logo} />
         <button
           onClick={handleActive}
-          className={"hamburger " + "hamburger--vortex " + isActive}
+          className={"hamburger hamburger--vortex " + isActive}
           type='button'
         >
           <span className='hamburger-box'>
