@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 
 import logo from "../assets/logo.jpg";
-
+//redux
+import { active, inactive } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 function Navi() {
   const [isActive, setIsActive] = useState("");
+  const dispatch = useDispatch();
+  const hamburgerWidth = useSelector((state) => state.hamburgerWidth);
   const handleActive = () => {
     isActive == "" ? setIsActive("is-active") : setIsActive("");
+    hamburgerWidth == 0 ? dispatch(active()) : dispatch(inactive());
   };
   return (
     <div className='navi'>
