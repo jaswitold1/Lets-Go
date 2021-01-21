@@ -1,21 +1,30 @@
-import Maps from "./components/Maps";
 import Navi from "./components/Navi";
-import Sidebar from "./components/Sidebar";
+import Main from "./components/Main";
+import Signin from "./components/Signin";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import HamburgerMenu from "./components/HamburgerMenu";
+
+//scss
 import "./scss/main.scss";
-//redux
-import { useSelector } from "react-redux";
+
+//router
+import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
-  const hamburgerWidth = useSelector((state) => state.hamburgerWidth);
-
   return (
     <>
-      <div style={{ width: hamburgerWidth }} className='hamburgerMenu'></div>
-      <div className='App'>
-        <Navi />
-        <Maps />
-        <Sidebar />
-      </div>
+      <BrowserRouter>
+        <div className='App'>
+          <Navi />
+          <HamburgerMenu />
+
+          <Route exact path='/' component={Main} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signin' component={Signin} />
+          <Route exact path='/logout' component={Logout} />
+        </div>
+      </BrowserRouter>
     </>
   );
 }
