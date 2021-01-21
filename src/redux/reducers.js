@@ -1,18 +1,20 @@
 const initialState = {
-  hamburgerWidth: "0",
+  hamburgerWidth: "translateX(-100%)",
 };
 const hamburgerWidthReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ACTIVE":
       return {
         ...state,
-        hamburgerWidth: "70vw",
+        hamburgerWidth: "translateX(0%)",
+        isActive: "is-active",
       };
 
     case "INACTIVE":
       return {
         ...state,
-        hamburgerWidth: 0,
+        hamburgerWidth: "translateX(-100%)",
+        isActive: "",
       };
 
     default:
