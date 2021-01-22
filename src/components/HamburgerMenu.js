@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { inactive } from "../redux/actions";
@@ -8,7 +8,18 @@ import { NavLink } from "react-router-dom";
 import firebase from "firebase";
 
 function HamburgerMenu() {
-  const hamburgerWidth = useSelector((state) => state.hamburgerWidth);
+  const [username, setUsername] = useState();
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      setUsername(user.email);
+    } else {
+      setUsername("");
+    }
+  });
+
+  const hamburgerWidth = useSelector(
+    (state) => state.hamburgerState.hamburgerWidth
+  );
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -20,15 +31,20 @@ function HamburgerMenu() {
       <NavLink onClick={() => dispatch(inactive())} to='/'>
         Home
       </NavLink>
-      <NavLink onClick={() => dispatch(inactive())} to='/login'>
-        Log In
-      </NavLink>
-      <NavLink onClick={() => dispatch(inactive())} to='/signin'>
-        Create an Account
-      </NavLink>
-      <NavLink onClick={handleLogout} to='/logout'>
-        Log Out
-      </NavLink>
+      {username ? (
+        <NavLink onClick={handleLogout} to='/logout'>
+          Log Out
+        </NavLink>
+      ) : (
+        <>
+          <NavLink onClick={() => dispatch(inactive())} to='/login'>
+            Log In
+          </NavLink>
+          <NavLink onClick={() => dispatch(inactive())} to='/signin'>
+            Create an Account
+          </NavLink>
+        </>
+      )}
     </div>
   );
 }
