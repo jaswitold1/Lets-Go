@@ -8,8 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function Navi() {
   const dispatch = useDispatch();
-  const hamburgerWidth = useSelector((state) => state.hamburgerWidth);
-  const isActive = useSelector((state) => state.isActive);
+  const hamburgerWidth = useSelector(
+    (state) => state.hamburgerState.hamburgerWidth
+  );
+  const isActive = useSelector((state) => state.hamburgerState.isActive);
   const handleActive = () => {
     hamburgerWidth == "translateX(-100%)"
       ? dispatch(active())

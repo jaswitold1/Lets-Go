@@ -1,7 +1,14 @@
 import React from "react";
-
+import { fetchData } from "../redux/actions";
+//redux
+import { useDispatch } from "react-redux";
 function Sidebar() {
-  return <div className='sidebar'></div>;
+  const dispatch = useDispatch();
+  return (
+    <div className='sidebar'>
+      <button onClick={() => dispatch(fetchData())}>dupa</button>
+    </div>
+  );
 }
 
 export default Sidebar;
