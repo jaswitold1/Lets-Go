@@ -33,6 +33,12 @@ export const dataSuccess = (data) => {
     payload: data,
   };
 };
+export const dataError = (error) => {
+  return {
+    type: "DATA_ERROR",
+    payload: error,
+  };
+};
 export const photosRequest = () => {
   return {
     type: "PHOTOS_REQUEST",
@@ -45,12 +51,25 @@ export const photosSuccess = (photos) => {
   };
 };
 export const fetchData = () => {
-  return function (dispatch) {
+  return (dispatch) => {
     dispatch(dataRequest());
-    firebase
+    const dbplaces = firebase
       .database()
       .ref()
       .child("places")
       .on("value", (snap) => dispatch(dataSuccess(snap.val())));
+  };
+};
+export const fetchPhotos = () => {
+  return (dispatch) => {
+    dispatch(photosRequest());
+    const getPhotos = async () => {
+      let photos = await firebase.storage().ref(`photos/`).listAll();
+      photos = photos.items;
+      photos = await Promise.all(photos.map((el) => el.getDownloadURL()));
+      dispatch(photosSuccess(photos));
+    };
+
+    getPhotos();
   };
 };
