@@ -24,11 +24,17 @@ export const dataStateReducer = (state = dataState, action) => {
         loading: "true",
       };
 
-    case "DATA_SUCCES":
+    case "DATA_SUCCESS":
       return {
         ...state,
         loading: "false",
         data: action.payload,
+      };
+    case "DATA_ERROR":
+      return {
+        ...state,
+        loading: "false",
+        error: action.payload,
       };
 
     default:
@@ -43,7 +49,7 @@ export const photosStateReducer = (state = photosState, action) => {
         loading: true,
       };
 
-    case "PHOTOS_SUCCES":
+    case "PHOTOS_SUCCESS":
       return {
         ...state,
         loading: "false",
