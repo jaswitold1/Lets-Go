@@ -28,7 +28,13 @@ function Sidebar() {
     <div className='sidebar'>
       {placeArr.map((el, i) => {
         return (
-          <Place placeName={el.placeName} placeDesc={el.placeDesc} key={i} />
+          <Place
+            photos={photos}
+            photoName={el.photoName}
+            placeName={el.placeName}
+            placeDesc={el.placeDesc}
+            key={i}
+          />
         );
       })}
     </div>

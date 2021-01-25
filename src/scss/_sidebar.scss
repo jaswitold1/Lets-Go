@@ -1,9 +1,46 @@
 .sidebar {
   height: 35vh;
-  background-color: lightslategray;
+  background-color: #f6f6f6;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: -1;
+  overflow: scroll;
+  display: flex;
+
+  .place {
+    display: flex;
+    height: 60%;
+    background-color: white;
+    margin: 5%;
+    border-radius: 10px;
+    .placeContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      * {
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-size: 1.3rem;
+
+        width: 70vw;
+      }
+      p {
+        color: grey;
+        font-weight: lighter;
+      }
+      .placeCategory {
+        font-weight: lighter;
+      }
+    }
+    img {
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
