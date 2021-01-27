@@ -14,6 +14,9 @@ function Sidebar() {
   //useSelector
   const data = useSelector((state) => state.dataState.data);
   const photos = useSelector((state) => state.photosState.photos);
+  const hamburgerLightsOut = useSelector(
+    (state) => state.hamburgerState.hamburgerLightsOut
+  );
 
   // converting all user's data to array of all places
   let placeArr = [];
@@ -25,7 +28,8 @@ function Sidebar() {
 
   const dispatch = useDispatch();
   return (
-    <div className='sidebar'>
+    <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
+      <div className='sidebarNavi'></div>
       {placeArr.map((el, i) => {
         return (
           <Place

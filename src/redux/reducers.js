@@ -1,10 +1,7 @@
 const hamburgerState = {
   hamburgerWidth: "translateX(-100%)",
 };
-const authState = {
-  lowerMenuDisplay: "none",
-  mapsHeight: "53vh",
-};
+const authState = {};
 const dataState = {
   loading: false,
   data: [],
@@ -67,14 +64,14 @@ export const authStateReducer = (state = authState, action) => {
       return {
         ...state,
         lowerMenuDisplay: "flex",
-        mapsHeight: "47vh",
+        upperNaviHeight: "70%",
       };
 
     case "NOT_LOGGED":
       return {
         ...state,
         lowerMenuDisplay: "none",
-        mapsHeight: "53vh",
+        upperNaviHeight: "100%",
       };
 
     default:
@@ -87,6 +84,8 @@ export const hamburgerWidthReducer = (state = hamburgerState, action) => {
       return {
         ...state,
         hamburgerWidth: "translateX(0%)",
+        hamburgerLightsOut: "brightness(50%)",
+
         isActive: "is-active",
       };
 
@@ -94,6 +93,7 @@ export const hamburgerWidthReducer = (state = hamburgerState, action) => {
       return {
         ...state,
         hamburgerWidth: "translateX(-100%)",
+        hamburgerLightsOut: "brightness(100%)",
         isActive: "",
       };
 

@@ -1,17 +1,21 @@
 import React from "react";
-
+import LowerMenu from "./LowerMenu";
 import logo from "../assets/logo.jpg";
 //redux
 import { active, inactive } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 //router
 import { Link } from "react-router-dom";
+
 function Navi() {
   const dispatch = useDispatch();
   const hamburgerWidth = useSelector(
     (state) => state.hamburgerState.hamburgerWidth
   );
   const isActive = useSelector((state) => state.hamburgerState.isActive);
+  const upperNaviHeight = useSelector(
+    (state) => state.authState.upperNaviHeight
+  );
   const handleActive = () => {
     hamburgerWidth == "translateX(-100%)"
       ? dispatch(active())
@@ -19,7 +23,7 @@ function Navi() {
   };
   return (
     <div className='navi'>
-      <div className='upperNavi'>
+      <div style={{ height: upperNaviHeight }} className='upperNavi'>
         <div className='balanceSpaceBetween'></div>
         <Link to='/' className='logo'>
           <img alt='logo' src={logo} />
@@ -34,6 +38,7 @@ function Navi() {
           </span>
         </button>
       </div>
+      <LowerMenu />
     </div>
   );
 }
