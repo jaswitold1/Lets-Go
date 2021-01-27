@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 import L from "leaflet";
 
 function Maps() {
-  const mapsHeight = useSelector((state) => state.mapsHeight);
+  const hamburgerLightsOut = useSelector(
+    (state) => state.hamburgerState.hamburgerLightsOut
+  );
   const [userLocation, setUserLocation] = useState();
   const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
@@ -50,7 +52,7 @@ function Maps() {
     // setMap(mymap);
   }, []);
 
-  return <div id='mapid' style={{ height: mapsHeight }}></div>;
+  return <div style={{ filter: hamburgerLightsOut }} id='mapid'></div>;
 }
 
 export default Maps;

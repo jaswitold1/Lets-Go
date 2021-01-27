@@ -5,7 +5,6 @@ import LowerMenu from "./LowerMenu";
 function Main() {
   return (
     <div>
-      <LowerMenu />
       <Maps />
       <Sidebar />
     </div>

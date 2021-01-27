@@ -23,8 +23,10 @@ function LowerMenu() {
   });
   return (
     <div style={{ display: lowerMenuDisplay }} className='lowerMenu'>
-      <div className='welcomeUsername'>Welcome {username} !</div>
-      <button className='addPlaceBtn'>Add place !</button>
+      <div className='lowerMenuContainer'>
+        <button className='addPlaceBtn'>Add place !</button>
+        <div className='welcomeUsername'>Welcome {username} !</div>
+      </div>
     </div>
   );
 }

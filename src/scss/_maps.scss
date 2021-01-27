@@ -1,8 +1,10 @@
 #mapid {
-  height: 53vh;
+  height: 60vh;
   background-color: rgb(244, 244, 244);
   position: fixed;
   width: 100%;
   top: 12vh;
   left: 0;
+
+  transition: 0.5s;
 }
