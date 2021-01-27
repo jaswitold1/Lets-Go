@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Place from "./Place";
+import Search from "./Search";
 import { fetchData, fetchPhotos } from "../redux/actions";
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +30,11 @@ function Sidebar() {
   const dispatch = useDispatch();
   return (
     <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
-      <div className='sidebarNavi'></div>
+      <div className='sidebarNavi'>
+        <div className='sidebarNaviContainer'>
+          <Search />
+        </div>
+      </div>
       {placeArr.map((el, i) => {
         return (
           <Place
