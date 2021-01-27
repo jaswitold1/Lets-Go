@@ -1,15 +1,7 @@
 .sidebar {
-  .sidebarNavi {
-    background-color: white;
-    width: 85vw;
-    height: 6vh;
-    position: fixed;
-    bottom: 26vh;
-    right: 0;
-    border-radius: 10px;
-  }
   height: 28vh;
-  background-color: #ececec;
+  background-color: #cacaca;
+
   position: fixed;
   bottom: 0;
   left: 0;
@@ -18,6 +10,31 @@
   overflow: scroll;
   display: flex;
   align-items: flex-end;
+  .sidebarNavi {
+    background-color: white;
+    width: 100vw;
+    height: 4vh;
+    position: fixed;
+    bottom: 24vh;
+    right: 0;
+    box-shadow: 0 0 5px 2px gray;
+    display: flex;
+    justify-content: center;
+    .sidebarNaviContainer {
+      width: 92.2vw;
+      .search {
+        display: flex;
+        align-items: center;
+        color: #ff6a75;
+        font-size: 2rem;
+
+        input {
+          border: none;
+          border-bottom: 1px solid #ff6a75;
+        }
+      }
+    }
+  }
 
   .place {
     display: flex;

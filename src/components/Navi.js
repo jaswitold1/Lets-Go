@@ -16,6 +16,7 @@ function Navi() {
   const upperNaviHeight = useSelector(
     (state) => state.authState.upperNaviHeight
   );
+
   const handleActive = () => {
     hamburgerWidth == "translateX(-100%)"
       ? dispatch(active())
@@ -25,8 +26,8 @@ function Navi() {
     <div className='navi'>
       <div style={{ height: upperNaviHeight }} className='upperNavi'>
         <div className='balanceSpaceBetween'></div>
-        <Link to='/' className='logo'>
-          <img alt='logo' src={logo} />
+        <Link onClick={() => dispatch(inactive())} to='/' className='logo'>
+          {/* <img alt='logo' src={logo} /> */}
         </Link>
         <button
           onClick={handleActive}
