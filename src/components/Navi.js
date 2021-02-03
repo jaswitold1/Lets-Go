@@ -25,7 +25,7 @@ function Navi() {
   return (
     <div className='navi'>
       <div style={{ height: upperNaviHeight }} className='upperNavi'>
-        <div className='balanceSpaceBetween'></div>
+        {/* <div className='balanceSpaceBetween'></div> */}
         <Link onClick={() => dispatch(inactive())} to='/' className='logo'>
           {/* <img alt='logo' src={logo} /> */}
         </Link>

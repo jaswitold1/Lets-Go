@@ -9,9 +9,21 @@ function Maps() {
   const hamburgerLightsOut = useSelector(
     (state) => state.hamburgerState.hamburgerLightsOut
   );
+  const data = useSelector((state) => state.dataState.data);
   const [userLocation, setUserLocation] = useState();
   const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
+
+  // place markers on the map
+  useEffect(() => {
+    Object.entries(data).forEach((el) => {
+      Object.entries(el[1]).forEach((element) => {
+        L.marker([element[1].placeLat, element[1].placeLng])
+          .bindPopup(`<b>${element[1].placeName}</b>`)
+          .addTo(map);
+      });
+    });
+  }, [data]);
 
   // get user location
   navigator.geolocation.getCurrentPosition(showLocation);
@@ -49,7 +61,7 @@ function Maps() {
     // mymap.addEventListener("moveend", function () {
     //   setPinLoc(mymap.getCenter());
     // });
-    // setMap(mymap);
+    setMap(mymap);
   }, []);
 
   return <div style={{ filter: hamburgerLightsOut }} id='mapid'></div>;
