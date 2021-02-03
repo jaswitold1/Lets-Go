@@ -6,6 +6,7 @@ const dataState = {
   loading: false,
   data: [],
   error: "",
+  placeArr: [],
 };
 const photosState = {
   loading: false,
@@ -27,6 +28,7 @@ export const dataStateReducer = (state = dataState, action) => {
         loading: "false",
         data: action.payload,
       };
+
     case "DATA_ERROR":
       return {
         ...state,
