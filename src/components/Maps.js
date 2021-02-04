@@ -10,38 +10,21 @@ function Maps() {
     (state) => state.hamburgerState.hamburgerLightsOut
   );
   const data = useSelector((state) => state.dataState.data);
-  const [userLocation, setUserLocation] = useState();
   const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
 
-  // place markers on the map
-  useEffect(() => {
-    Object.entries(data).forEach((el) => {
-      Object.entries(el[1]).forEach((element) => {
-        L.marker([element[1].placeLat, element[1].placeLng])
-          .bindPopup(`<b>${element[1].placeName}</b>`)
-          .addTo(map);
-      });
-    });
-  }, [data]);
-
-  // get user location
-  navigator.geolocation.getCurrentPosition(showLocation);
-  function showLocation(position) {
-    setUserLocation({
-      lat: position.coords.latitude,
-      long: position.coords.longitude,
-    });
-  }
-
   //mount leaflet Map
   useEffect(() => {
-    var mymap = L.map("mapid").setView([50, 19.9], 4);
+    var mymap = L.map("mapid");
+    mymap.locate({ setView: true, maxZoom: 19 });
+
+    setMap(mymap);
     L.tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
         maxZoom: 19,
-        minZoom: 9,
+        minZoom: 5,
+
         id: "mapbox/streets-v11",
         tileSize: 512,
         zoomOffset: -1,
@@ -49,6 +32,7 @@ function Maps() {
           "pk.eyJ1IjoiamFzd2l0b2xkMSIsImEiOiJja2ZoZDZydHQwMThvMnRxbXk5bmUyZ2Z6In0.xyFZ2Wq7NzGgMTkMUMM9Og",
       }
     ).addTo(mymap);
+
     // BELOW mapCenterCoord data !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // mymap.locate({ setView: true, enableHighAccuracy: true });
     // L.control.mapCenterCoord().addTo(mymap);
@@ -61,8 +45,20 @@ function Maps() {
     // mymap.addEventListener("moveend", function () {
     //   setPinLoc(mymap.getCenter());
     // });
-    setMap(mymap);
   }, []);
+
+  // place markers on the map
+  useEffect(() => {
+    map
+      ? Object.entries(data).forEach((el) => {
+          Object.entries(el[1]).forEach((element) => {
+            L.marker([element[1].placeLat, element[1].placeLng])
+              .bindPopup(`<b>${element[1].placeName}</b>`)
+              .addTo(map);
+          });
+        })
+      : console.log("map markers function called before map mounted");
+  }, [data]);
 
   return <div style={{ filter: hamburgerLightsOut }} id='mapid'></div>;
 }
