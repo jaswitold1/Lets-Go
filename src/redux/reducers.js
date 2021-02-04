@@ -13,7 +13,19 @@ const photosState = {
   photos: [],
   error: "",
 };
-
+const hoverState = {
+  hover: "nada",
+};
+export const hoverReducer = (state = hoverState, action) => {
+  switch (action.type) {
+    case "HOVER":
+      return {
+        hover: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 export const dataStateReducer = (state = dataState, action) => {
   switch (action.type) {
     case "DATA_REQUEST":
