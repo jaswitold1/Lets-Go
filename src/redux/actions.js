@@ -1,7 +1,7 @@
 //firebase
 import firebase from "firebase";
 
-//actions
+//actions hamburger
 export const active = () => {
   return {
     type: "ACTIVE",
@@ -12,6 +12,7 @@ export const inactive = () => {
     type: "INACTIVE",
   };
 };
+//actions auth
 export const logged = () => {
   return {
     type: "LOGGED",
@@ -22,6 +23,7 @@ export const notLogged = () => {
     type: "NOT_LOGGED",
   };
 };
+//actions data download
 export const dataRequest = () => {
   return {
     type: "DATA_REQUEST",
@@ -48,6 +50,13 @@ export const photosSuccess = (photos) => {
   return {
     type: "PHOTOS_SUCCESS",
     payload: photos,
+  };
+};
+// actions hover on markers
+export const hover = (hover) => {
+  return {
+    type: "HOVER",
+    payload: hover,
   };
 };
 export const fetchData = () => {

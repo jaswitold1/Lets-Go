@@ -10,6 +10,7 @@ function Maps() {
     (state) => state.hamburgerState.hamburgerLightsOut
   );
   const data = useSelector((state) => state.dataState.data);
+  const hover = useSelector((state) => state.hoverState.hover);
   const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
 
@@ -59,6 +60,23 @@ function Maps() {
         })
       : console.log("map markers function called before map mounted");
   }, [data]);
+
+  //pan map to hovered place
+  useEffect(() => {
+    let i = "1";
+    if (data) {
+      i = locData.indexOf(locData.filter((el) => el.photoName == hover)[0]);
+      //nie dziala jeszcze
+
+      L.popup({
+        autoPanPadding: [300, 300],
+      })
+        .setLatLng([locData[i].placeLat, locData[i].placeLng])
+        .setContent(`<b>${locData[i].placeName}</b>`)
+
+        .openOn(map);
+    }
+  }, [hover]);
 
   return <div style={{ filter: hamburgerLightsOut }} id='mapid'></div>;
 }

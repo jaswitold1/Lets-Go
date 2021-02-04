@@ -4,6 +4,7 @@ import {
   hamburgerWidthReducer,
   dataStateReducer,
   photosStateReducer,
+  hoverReducer,
 } from "./reducers";
 
 const rootReducer = combineReducers({
@@ -11,5 +12,6 @@ const rootReducer = combineReducers({
   hamburgerState: hamburgerWidthReducer,
   dataState: dataStateReducer,
   photosState: photosStateReducer,
+  hoverState: hoverReducer,
 });
 export default rootReducer;
