@@ -7,6 +7,8 @@ import HamburgerMenu from "./components/HamburgerMenu";
 
 //scss
 import "./scss/main.scss";
+//css
+import "./components/src/L.Control.MapCenterCoord.css";
 
 //router
 import { BrowserRouter, Route } from "react-router-dom";

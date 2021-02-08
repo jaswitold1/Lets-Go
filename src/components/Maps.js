@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import control from "../components/src/L.Control.MapCenterCoord";
 //redux
 import { useSelector } from "react-redux";
 //leaflet
@@ -10,14 +10,24 @@ function Maps() {
     (state) => state.hamburgerState.hamburgerLightsOut
   );
   const data = useSelector((state) => state.dataState.data);
-  const hover = useSelector((state) => state.hoverState.hover);
+
+  const hoverLat = useSelector((state) => state.hoverState.hoverLat);
+  const hoverLng = useSelector((state) => state.hoverState.hoverLng);
+  const placeName = useSelector((state) => state.hoverState.hoverPlaceName);
+
   const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
 
   //mount leaflet Map
   useEffect(() => {
-    var mymap = L.map("mapid");
-    mymap.locate({ setView: true, maxZoom: 19 });
+    var mymap = L.map("mapid", {
+      center: [51.505, -0.09],
+      zoom: 13,
+    });
+    //locating user
+    mymap.locate({ setView: true, maxZoom: 12 });
+    // BELOW mapCenterCoord data !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    L.control.mapCenterCoord().addTo(mymap);
 
     setMap(mymap);
     L.tileLayer(
@@ -34,14 +44,6 @@ function Maps() {
       }
     ).addTo(mymap);
 
-    // BELOW mapCenterCoord data !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // mymap.locate({ setView: true, enableHighAccuracy: true });
-    // L.control.mapCenterCoord().addTo(mymap);
-    // L.control.mapCenterCoord({
-    //   latlngFormat: "DD",
-    //   onMove: true,
-    //   template: "{y} | {x}",
-    // });
     //dangerous !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // mymap.addEventListener("moveend", function () {
     //   setPinLoc(mymap.getCenter());
@@ -58,25 +60,23 @@ function Maps() {
               .addTo(map);
           });
         })
-      : console.log("map markers function called before map mounted");
+      : console.log(
+          "map markers function called before map mounted or location on device disabled"
+        );
   }, [data]);
 
-  //pan map to hovered place
-  // useEffect(() => {
-  //   let i = "1";
-  //   if (data) {
-  //     i = locData.indexOf(locData.filter((el) => el.photoName == hover)[0]);
-  //     //nie dziala jeszcze
+  // pan map to hovered place
+  useEffect(() => {
+    if (hoverLat) {
+      L.popup({
+        autoPanPadding: [300, 300],
+      })
+        .setLatLng([hoverLat, hoverLng])
+        .setContent(`<b>${placeName}</b>`)
 
-  //     L.popup({
-  //       autoPanPadding: [300, 300],
-  //     })
-  //       .setLatLng([locData[i].placeLat, locData[i].placeLng])
-  //       .setContent(`<b>${locData[i].placeName}</b>`)
-
-  //       .openOn(map);
-  //   }
-  // }, [hover]);
+        .openOn(map);
+    }
+  }, [hoverLat]);
 
   return <div style={{ filter: hamburgerLightsOut }} id='mapid'></div>;
 }

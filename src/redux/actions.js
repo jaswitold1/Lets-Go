@@ -59,6 +59,25 @@ export const hover = (hover) => {
     payload: hover,
   };
 };
+export const hoverLat = (hoverLat) => {
+  return {
+    type: "HOVERLAT",
+    payload: hoverLat,
+  };
+};
+export const hoverLng = (hoverLng) => {
+  return {
+    type: "HOVERLNG",
+    payload: hoverLng,
+  };
+};
+export const hoverPlaceName = (hoverPlaceName) => {
+  return {
+    type: "HOVERPLACENAME",
+    payload: hoverPlaceName,
+  };
+};
+//actions data
 export const fetchData = () => {
   return (dispatch) => {
     dispatch(dataRequest());

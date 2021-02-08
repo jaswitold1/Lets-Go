@@ -42,6 +42,8 @@ function Sidebar() {
             photoName={el.photoName}
             placeName={el.placeName}
             placeDesc={el.placeDesc}
+            placeLat={el.placeLat}
+            placeLng={el.placeLng}
             key={i}
           />
         );
