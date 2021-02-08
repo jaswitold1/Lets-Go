@@ -1,11 +1,22 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { hover } from "../redux/actions";
-function Place({ photoName, photos, placeName, placeDesc }) {
+import { hover, hoverLat, hoverLng, hoverPlaceName } from "../redux/actions";
+
+function Place({
+  photoName,
+  photos,
+  placeName,
+  placeDesc,
+  placeLat,
+  placeLng,
+}) {
   const dispatch = useDispatch();
   const handleHover = (event) => {
     event.stopPropagation();
     dispatch(hover(event.target.id));
+    dispatch(hoverLat(placeLat));
+    dispatch(hoverLng(placeLng));
+    dispatch(hoverPlaceName(placeName));
   };
   return (
     <div onMouseOver={handleHover} id={photoName} className='place'>
