@@ -13,7 +13,11 @@ const photosState = {
   photos: [],
   error: "",
 };
-const hoverState = {};
+const hoverState = {
+  hover: "",
+  hoverLat: "",
+  hoverLng: "",
+};
 export const hoverReducer = (state = hoverState, action) => {
   switch (action.type) {
     case "HOVER":
