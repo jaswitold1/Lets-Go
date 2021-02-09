@@ -18,7 +18,7 @@ function Maps() {
   const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
 
-  //mount leaflet Map
+  //mounting leaflet Map
   useEffect(() => {
     var mymap = L.map("mapid", {
       center: [51.505, -0.09],
@@ -26,8 +26,12 @@ function Maps() {
     });
     //locating user
     mymap.locate({ setView: true, maxZoom: 12 });
-    // BELOW mapCenterCoord data !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // user marker position
     L.control.mapCenterCoord().addTo(mymap);
+    //dangerous !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // mymap.addEventListener("moveend", function () {
+    //   setPinLoc(mymap.getCenter());
+    // });
 
     setMap(mymap);
     L.tileLayer(
@@ -43,11 +47,6 @@ function Maps() {
           "pk.eyJ1IjoiamFzd2l0b2xkMSIsImEiOiJja2ZoZDZydHQwMThvMnRxbXk5bmUyZ2Z6In0.xyFZ2Wq7NzGgMTkMUMM9Og",
       }
     ).addTo(mymap);
-
-    //dangerous !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // mymap.addEventListener("moveend", function () {
-    //   setPinLoc(mymap.getCenter());
-    // });
   }, []);
 
   // place markers on the map
@@ -61,15 +60,15 @@ function Maps() {
           });
         })
       : console.log(
-          "map markers function called before map mounted or location on device disabled"
+          "map markers function called before map mounted or location services disabled"
         );
   }, [data]);
 
   // pan map to hovered place
   useEffect(() => {
-    if (hoverLat) {
+    if (map) {
       L.popup({
-        autoPanPadding: [300, 300],
+        autoPanPadding: new L.Point(200, 200),
       })
         .setLatLng([hoverLat, hoverLng])
         .setContent(`<b>${placeName}</b>`)
