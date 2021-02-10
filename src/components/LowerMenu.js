@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 //firebase
 import firebase from "firebase";
 //redux
@@ -24,7 +25,9 @@ function LowerMenu() {
   return (
     <div style={{ display: lowerMenuDisplay }} className='lowerMenu'>
       <div className='lowerMenuContainer'>
-        <button className='addPlaceBtn'>Add place !</button>
+        <Link to='/add-place' className='addPlaceBtn'>
+          Add place !
+        </Link>
         <div className='welcomeUsername'>Welcome {username} !</div>
       </div>
     </div>

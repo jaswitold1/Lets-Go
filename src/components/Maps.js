@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import control from "../components/src/L.Control.MapCenterCoord";
 //redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { pinLocation } from "../redux/actions";
 //leaflet
 import L from "leaflet";
 
@@ -10,12 +11,11 @@ function Maps() {
     (state) => state.hamburgerState.hamburgerLightsOut
   );
   const data = useSelector((state) => state.dataState.data);
-
+  const dispatch = useDispatch();
   const hoverLat = useSelector((state) => state.hoverState.hoverLat);
   const hoverLng = useSelector((state) => state.hoverState.hoverLng);
   const placeName = useSelector((state) => state.hoverState.hoverPlaceName);
 
-  const [pinLoc, setPinLoc] = useState();
   const [map, setMap] = useState();
 
   //mounting leaflet Map
@@ -28,10 +28,10 @@ function Maps() {
     mymap.locate({ setView: true, maxZoom: 12 });
     // user marker position
     L.control.mapCenterCoord().addTo(mymap);
-    //dangerous !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // mymap.addEventListener("moveend", function () {
-    //   setPinLoc(mymap.getCenter());
-    // });
+
+    mymap.addEventListener("moveend", function () {
+      dispatch(pinLocation(mymap.getCenter()));
+    });
 
     setMap(mymap);
     L.tileLayer(

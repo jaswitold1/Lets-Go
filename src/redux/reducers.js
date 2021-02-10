@@ -18,6 +18,17 @@ const hoverState = {
   hoverLat: "",
   hoverLng: "",
 };
+const pinLocationState = {};
+export const pinLocationReducer = (state = pinLocationState, action) => {
+  switch (action.type) {
+    case "PINLOCATION":
+      return {
+        pinLocation: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 export const hoverReducer = (state = hoverState, action) => {
   switch (action.type) {
     case "HOVER":
