@@ -77,6 +77,13 @@ export const hoverPlaceName = (hoverPlaceName) => {
     payload: hoverPlaceName,
   };
 };
+export const pinLocation = (pinLocation) => {
+  return {
+    type: "PINLOCATION",
+    payload: pinLocation,
+  };
+};
+
 //actions data
 export const fetchData = () => {
   return (dispatch) => {
