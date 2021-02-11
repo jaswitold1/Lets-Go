@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 //firebase
 import firebase from "firebase";
 //redux
 import { useSelector } from "react-redux";
 //https://source.unsplash.com/700x1000/?travel
 function AddPlace() {
+  let history = useHistory();
   const pinLocation = useSelector(
     (state) => state.pinLocationState.pinLocation
   );
@@ -22,20 +24,22 @@ function AddPlace() {
 
       [event.target.name]: event.target.value,
       uid: firebase.auth().currentUser.uid,
+      lat: pinLocation.lat,
+      lng: pinLocation.lng,
     });
   };
   const handleAddPlace = () => {
-    var photoId = Math.floor(Math.random() * 9999) + 1;
+    var photoId = Math.floor(Math.random() * 999999) + 1;
     let storageRef = firebase.storage().ref("photos/" + photoId);
 
     storageRef.put(photo);
     db.ref(`places/${places.uid}`).push({
       placeName: places.placeName,
       uid: places.uid,
-      placeDesc: places.placeDesc,
+      placeDesc: places.placeDescription,
       photoName: photoId,
-      placeLat: pinLocation.lat,
-      placeLng: pinLocation.lng,
+      placeLat: places.lat,
+      placeLng: places.lng,
     });
 
     setPlaces({
@@ -43,17 +47,14 @@ function AddPlace() {
       uid: places.uid,
       placeDesc: "",
     });
+    history.push("/");
   };
   const handleBothAdd = () => {
     handleAddPlace();
   };
+
   return (
-    <div
-      style={{
-        backgroundImage: `url(${"https://source.unsplash.com/900x1300/?city"})`,
-      }}
-      className='addPlace'
-    >
+    <div className='addPlace'>
       <form className='addPlaceContainer'>
         <label for='placeName'>Place Name</label>
         <input
