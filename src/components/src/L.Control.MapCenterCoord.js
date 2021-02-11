@@ -156,21 +156,21 @@ L.Control.MapCenterCoord = L.Control.extend({
    https://code.google.com/p/javascript-number-formatter/
    author: KPL, KHL
   */
-  _format: function (ma, va) {
-    if (!ma || isNaN(+va)) {
-      return va; //return as it is.
+  _format: function (m, v) {
+    if (!m || isNaN(+v)) {
+      return v; //return as it is.
     }
     //convert any string to number according to formation sign.
-    var v = ma.charAt(0) === "-" ? -va : +va;
+    var v = m.charAt(0) == "-" ? -v : +v;
     var isNegative = v < 0 ? (v = -v) : 0; //process only abs(), and turn on flag.
 
     //search for separator for grp & decimal, anything not digit, not +/- sign, not #.
-    var result = ma.match(/[^\d\-\+#]/g);
+    var result = m.match(/[^\d\-\+#]/g);
     var Decimal = (result && result[result.length - 1]) || "."; //treat the right most symbol as decimal
     var Group = (result && result[1] && result[0]) || ","; //treat the left most symbol as group separator
 
     //split the decimal for the format string if any.
-    var m = ma.split(Decimal);
+    var m = m.split(Decimal);
     //Fix the decimal first, toFixed will auto fill trailing zero.
     v = v.toFixed(m[1] && m[1].length);
     v = +v + ""; //convert number to string to trim off *all* trailing decimal zero(es)
@@ -190,7 +190,7 @@ L.Control.MapCenterCoord = L.Control.extend({
       while (part[0].length < m[0].length - pos_lead_zero) {
         part[0] = "0" + part[0];
       }
-    } else if (+part[0] === 0) {
+    } else if (+part[0] == 0) {
       part[0] = "";
     }
 
