@@ -22,10 +22,10 @@ function Maps() {
   useEffect(() => {
     var mymap = L.map("mapid", {
       center: [51.505, -0.09],
-      zoom: 13,
+      zoom: "15",
     });
     //locating user
-    mymap.locate({ setView: true, maxZoom: 12 });
+    mymap.locate({ setView: true, maxZoom: "11" });
     // user marker position
     L.control.mapCenterCoord().addTo(mymap);
 

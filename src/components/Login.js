@@ -13,7 +13,9 @@ export default function Logowanie() {
       [event.target.name]: event.target.value,
     });
   };
-  const handleLogin = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+
     firebase
       .auth()
       .signInWithEmailAndPassword(auth.email, auth.password)
@@ -30,20 +32,19 @@ export default function Logowanie() {
 
   return (
     <div className='login'>
-      <h1>Log In !</h1>
-
       <div>
-        <form>
+        <form className='loginContainer'>
+          <h1>Log In !</h1>
           <label htmlFor='email'>Email</label>
           <input onChange={handleAuth} name='email' type='text' />
           <label htmlFor='password'>Password</label>
           <input onChange={handleAuth} name='password' type='password' />
+          <button className={"authBtn"} onClick={handleLogin}>
+            Log In
+          </button>
         </form>
         <div>{error}</div>
       </div>
-      <button className={"authBtn"} onClick={handleLogin}>
-        Log In
-      </button>
     </div>
   );
 }

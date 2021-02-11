@@ -14,7 +14,8 @@ export default function Rejestracja() {
       [event.target.name]: event.target.value,
     });
   };
-  const handleSignin = () => {
+  const handleSignin = (event) => {
+    event.preventDefault();
     firebase
       .auth()
       .createUserWithEmailAndPassword(auth.email, auth.password)
@@ -30,29 +31,28 @@ export default function Rejestracja() {
 
   return (
     <div className='signin'>
-      <h1>Create an Account !</h1>
-
       <div>
-        <form>
+        <form className='signinContainer'>
+          <h1>Create an Account !</h1>
           <label htmlFor='email'>Email</label>
           <input onChange={handleAuth} name='email' type='text' />
           <label htmlFor='password'>Password</label>
           <input onChange={handleAuth} name='password' type='password' />
           <label htmlFor='repeatpassword'>Repeat Password</label>
           <input onChange={handleAuth} name='repeatpassword' type='password' />
+          {auth.password === auth.repeatpassword &&
+          auth.password !== undefined &&
+          auth.password !== "" ? (
+            <button className='authBtn' onClick={handleSignin}>
+              Create an Account
+            </button>
+          ) : (
+            <button className='authBtn' disabled='true'>
+              Passwords do not match
+            </button>
+          )}
         </form>
       </div>
-      {auth.password === auth.repeatpassword &&
-      auth.password !== undefined &&
-      auth.password !== "" ? (
-        <button className='authBtn' onClick={handleSignin}>
-          Create an Account
-        </button>
-      ) : (
-        <button className='authBtn' disabled='true'>
-          Passwords do not match
-        </button>
-      )}
       <div>{error}</div>
     </div>
   );
