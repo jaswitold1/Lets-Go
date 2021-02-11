@@ -88,7 +88,7 @@ export const pinLocation = (pinLocation) => {
 export const fetchData = () => {
   return (dispatch) => {
     dispatch(dataRequest());
-    const dbplaces = firebase
+    firebase
       .database()
       .ref()
       .child("places")

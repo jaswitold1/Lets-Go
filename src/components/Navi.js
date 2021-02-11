@@ -1,6 +1,6 @@
 import React from "react";
 import LowerMenu from "./LowerMenu";
-import logo from "../assets/logo.jpg";
+
 //redux
 import { active, inactive } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ function Navi() {
   );
 
   const handleActive = () => {
-    hamburgerWidth == "translateX(-100%)"
+    hamburgerWidth === "translateX(-100%)"
       ? dispatch(active())
       : dispatch(inactive());
   };
