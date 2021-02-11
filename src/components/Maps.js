@@ -27,11 +27,11 @@ function Maps() {
     //locating user
     mymap.locate({ setView: true, maxZoom: 12 });
     // user marker position
-    L.control.mapCenterCoord().addTo(mymap);
+    // L.control.mapCenterCoord().addTo(mymap);
 
-    mymap.addEventListener("moveend", function () {
-      dispatch(pinLocation(mymap.getCenter()));
-    });
+    // mymap.addEventListener("moveend", function () {
+    //   dispatch(pinLocation(mymap.getCenter()));
+    // });
 
     setMap(mymap);
     L.tileLayer(
