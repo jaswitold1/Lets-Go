@@ -6,11 +6,12 @@ import { fetchData, fetchPhotos } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 function Sidebar() {
+  const dispatch = useDispatch();
   //loading data from firebase
   useEffect(() => {
     dispatch(fetchData());
     dispatch(fetchPhotos());
-  }, []);
+  }, [dispatch]);
 
   //useSelector
   const data = useSelector((state) => state.dataState.data);
@@ -27,7 +28,6 @@ function Sidebar() {
     });
   });
 
-  const dispatch = useDispatch();
   return (
     <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
       <div className='sidebarNavi'>
