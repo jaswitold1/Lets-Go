@@ -34,9 +34,19 @@ function HamburgerMenu() {
 
       {username ? (
         // LOGGED IN !!!!!!!!!
-        <NavLink onClick={handleLogout} to='/logout'>
-          Log Out
-        </NavLink>
+        <>
+          <NavLink onClick={handleLogout} to='/logout'>
+            Log Out
+          </NavLink>
+          <NavLink onClick={() => dispatch(inactive())} to='/add-place'>
+            Add place
+          </NavLink>
+          <NavLink style={{ color: "#ff6a75" }} to='/'>
+            Plan a Route
+          </NavLink>
+          <NavLink to='/'>Radius</NavLink>
+          <NavLink to='/'>Categories</NavLink>
+        </>
       ) : (
         //   NOT LOGGED IN !!!!!!!
         <>
@@ -56,6 +66,7 @@ function HamburgerMenu() {
           >
             Plan a Route
           </NavLink>
+
           <NavLink onClick={() => dispatch(inactive())} to='/signin'>
             Radius
           </NavLink>

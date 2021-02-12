@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Place from "./Place";
 import Search from "./Search";
 import { fetchData, fetchPhotos, toggle } from "../redux/actions";
@@ -8,6 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import firebase from "firebase";
 
 function Sidebar() {
+  //search state
+  const [search, setSearch] = useState();
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+  //usedispatch
   const dispatch = useDispatch();
 
   //loading data from firebase
@@ -31,35 +38,53 @@ function Sidebar() {
       placeArr.push(element[1]);
     });
   });
-  //placeArr for logged user only
+  //yourPlaces - placeArr for logged user only
   let placeUserArr = [];
   if (placeArr) {
     console.log(
-      placeArr.filter((el) => el.uid == firebase.auth().currentUser.uid)
+      placeArr.filter((el) => el.uid === firebase.auth().currentUser.uid)
     );
   }
+  //search
+  let placeSearchArr = placeArr.filter((el) =>
+    el.placeName.toLowerCase().includes(search)
+  );
 
   return (
     <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
       <div className='sidebarNavi'>
         <div className='sidebarNaviContainer'>
-          <Search />
+          <Search search={search} handleSearch={handleSearch} />
         </div>
         {/* <input onClick={dispatch(toggle())} type='checkbox' /> */}
       </div>
-      {placeArr.map((el, i) => {
-        return (
-          <Place
-            photos={photos}
-            photoName={el.photoName}
-            placeName={el.placeName}
-            placeDesc={el.placeDesc}
-            placeLat={el.placeLat}
-            placeLng={el.placeLng}
-            key={i}
-          />
-        );
-      })}
+      {search
+        ? placeSearchArr.map((el, i) => {
+            return (
+              <Place
+                photos={photos}
+                photoName={el.photoName}
+                placeName={el.placeName}
+                placeDesc={el.placeDesc}
+                placeLat={el.placeLat}
+                placeLng={el.placeLng}
+                key={i}
+              />
+            );
+          })
+        : placeArr.map((el, i) => {
+            return (
+              <Place
+                photos={photos}
+                photoName={el.photoName}
+                placeName={el.placeName}
+                placeDesc={el.placeDesc}
+                placeLat={el.placeLat}
+                placeLng={el.placeLng}
+                key={i}
+              />
+            );
+          })}
     </div>
   );
 }
