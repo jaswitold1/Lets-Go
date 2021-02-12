@@ -77,7 +77,12 @@ function Maps() {
     }
   }, [hoverLat, hoverLng, placeName]);
 
-  return <div style={{ filter: hamburgerLightsOut }} id='mapid'></div>;
+  return (
+    <div
+      style={{ filter: `grayscale(80%) ${hamburgerLightsOut}` }}
+      id='mapid'
+    ></div>
+  );
 }
 
 export default Maps;

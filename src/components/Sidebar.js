@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import Place from "./Place";
 import Search from "./Search";
-import { fetchData, fetchPhotos } from "../redux/actions";
+import { fetchData, fetchPhotos, toggle } from "../redux/actions";
 //redux
 import { useDispatch, useSelector } from "react-redux";
+//firebase
+import firebase from "firebase";
 
 function Sidebar() {
   const dispatch = useDispatch();
+
   //loading data from firebase
   useEffect(() => {
     dispatch(fetchData());
@@ -14,6 +17,7 @@ function Sidebar() {
   }, [dispatch]);
 
   //useSelector
+  const toggleData = useSelector((state) => state.toggleState.toggle);
   const data = useSelector((state) => state.dataState.data);
   const photos = useSelector((state) => state.photosState.photos);
   const hamburgerLightsOut = useSelector(
@@ -27,6 +31,13 @@ function Sidebar() {
       placeArr.push(element[1]);
     });
   });
+  //placeArr for logged user only
+  let placeUserArr = [];
+  if (placeArr) {
+    console.log(
+      placeArr.filter((el) => el.uid == firebase.auth().currentUser.uid)
+    );
+  }
 
   return (
     <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
@@ -34,6 +45,7 @@ function Sidebar() {
         <div className='sidebarNaviContainer'>
           <Search />
         </div>
+        {/* <input onClick={dispatch(toggle())} type='checkbox' /> */}
       </div>
       {placeArr.map((el, i) => {
         return (

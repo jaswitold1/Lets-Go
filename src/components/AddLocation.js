@@ -4,11 +4,14 @@ import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 //redux
 import { useSelector } from "react-redux";
-//https://source.unsplash.com/700x1000/?travel
+
 function AddPlace() {
   let history = useHistory();
   const pinLocation = useSelector(
     (state) => state.pinLocationState.pinLocation
+  );
+  const hamburgerLightsOut = useSelector(
+    (state) => state.hamburgerState.hamburgerLightsOut
   );
   const db = firebase.database();
   const [places, setPlaces] = useState({});
@@ -54,7 +57,7 @@ function AddPlace() {
   };
 
   return (
-    <div className='addPlace'>
+    <div style={{ filter: hamburgerLightsOut }} className='addPlace'>
       <form className='addPlaceContainer'>
         <label for='placeName'>Place Name</label>
         <input
