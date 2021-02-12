@@ -47,7 +47,7 @@ function Maps() {
           "pk.eyJ1IjoiamFzd2l0b2xkMSIsImEiOiJja2ZoZDZydHQwMThvMnRxbXk5bmUyZ2Z6In0.xyFZ2Wq7NzGgMTkMUMM9Og",
       }
     ).addTo(mymap);
-  }, [dispatch]);
+  }, []);
 
   // place markers on the map
   useEffect(() => {
@@ -62,7 +62,7 @@ function Maps() {
       : console.log(
           "map markers function called before map mounted or location services disabled"
         );
-  }, [data, map]);
+  }, [data]);
 
   // pan map to hovered place
   useEffect(() => {
@@ -75,7 +75,7 @@ function Maps() {
 
         .openOn(map);
     }
-  }, [hoverLat, hoverLng, placeName]);
+  }, [hoverLat]);
 
   return (
     <div
