@@ -29,9 +29,9 @@ function Maps() {
     // user marker position
     L.control.mapCenterCoord().addTo(mymap);
 
-    mymap.addEventListener("moveend", function () {
-      dispatch(pinLocation(mymap.getCenter()));
-    });
+    // mymap.addEventListener("moveend", function () {
+    //   dispatch(pinLocation(mymap.getCenter()));
+    // });
 
     setMap(mymap);
     L.tileLayer(
