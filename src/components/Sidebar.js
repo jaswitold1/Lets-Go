@@ -39,12 +39,12 @@ function Sidebar() {
     });
   });
   //yourPlaces - placeArr for logged user only
-  let placeUserArr = [];
-  if (placeArr) {
-    console.log(
-      placeArr.filter((el) => el.uid === firebase.auth().currentUser.uid)
-    );
-  }
+  // let placeUserArr = [];
+  // if (placeArr) {
+  //   console.log(
+  //     placeArr.filter((el) => el.uid === firebase.auth().currentUser.uid)
+  //   );
+  // }
   //search
   let placeSearchArr = placeArr.filter((el) =>
     el.placeName.toLowerCase().includes(search.toLowerCase())
