@@ -1,5 +1,11 @@
 //firebase
 import firebase from "firebase";
+//actions your places toggle
+export const toggle = () => {
+  return {
+    type: "TOGGLE",
+  };
+};
 
 //actions hamburger
 export const active = () => {

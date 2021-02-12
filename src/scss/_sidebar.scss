@@ -9,7 +9,7 @@
   transition: 0.5s;
   overflow: scroll;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   .sidebarNavi {
     background-color: white;
     width: 100vw;
@@ -40,8 +40,9 @@
     display: flex;
     height: 70%;
     background-color: white;
-    margin: 5%;
+    margin: 4% 1% 0 2%;
     border-radius: 10px;
+    box-shadow: 10px 10px 10px grey;
     .placeContainer {
       margin-left: 3%;
       display: flex;
@@ -53,7 +54,7 @@
       h1 {
         font-size: 1.3rem;
 
-        width: 300px;
+        width: 250px;
       }
       p {
         color: grey;

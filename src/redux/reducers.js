@@ -18,6 +18,9 @@ const hoverState = {
   hoverLat: "",
   hoverLng: "",
 };
+const toggleState = {
+  toggleData: false,
+};
 const pinLocationState = {};
 export const pinLocationReducer = (state = pinLocationState, action) => {
   switch (action.type) {
@@ -25,6 +28,19 @@ export const pinLocationReducer = (state = pinLocationState, action) => {
       return {
         pinLocation: action.payload,
       };
+    default:
+      return state;
+  }
+};
+//naprawic ten reducer
+
+export const toggleReducer = (state = toggleState, action) => {
+  switch (action.type) {
+    case "TOGGLE":
+      return {
+        toggle: !state.toggleData,
+      };
+
     default:
       return state;
   }
