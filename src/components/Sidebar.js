@@ -9,7 +9,7 @@ import firebase from "firebase";
 
 function Sidebar() {
   //search state
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -47,7 +47,7 @@ function Sidebar() {
   }
   //search
   let placeSearchArr = placeArr.filter((el) =>
-    el.placeName.toLowerCase().includes(search)
+    el.placeName.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
