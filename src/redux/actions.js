@@ -108,7 +108,7 @@ export const fetchPhotos = () => {
       let photos = await firebase.storage().ref(`photos/`).listAll();
       photos = photos.items;
       photos = await Promise.all(photos.map((el) => el.getDownloadURL()));
-      dispatch(photosSuccess(photos));
+      dispatch(photosSuccess(await photos));
     };
 
     getPhotos();

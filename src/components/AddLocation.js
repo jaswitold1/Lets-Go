@@ -3,13 +3,15 @@ import { useHistory } from "react-router-dom";
 //firebase
 import firebase from "firebase";
 //redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPhotos } from "../redux/actions";
 
 function AddPlace() {
   let history = useHistory();
   const pinLocation = useSelector(
     (state) => state.pinLocationState.pinLocation
   );
+  const dispatch = useDispatch();
   const hamburgerLightsOut = useSelector(
     (state) => state.hamburgerState.hamburgerLightsOut
   );
@@ -54,6 +56,7 @@ function AddPlace() {
   };
   const handleBothAdd = () => {
     handleAddPlace();
+    dispatch(fetchPhotos());
   };
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { inactive } from "../redux/actions";
+import { inactive, toggle } from "../redux/actions";
 //router
 import { NavLink } from "react-router-dom";
 //firebase
@@ -20,10 +20,15 @@ function HamburgerMenu() {
   const hamburgerWidth = useSelector(
     (state) => state.hamburgerState.hamburgerWidth
   );
+  const toggleState = useSelector((state) => state.toggleState.toggleData);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     firebase.auth().signOut();
+    dispatch(inactive());
+  };
+  const handleYourPlaces = () => {
+    dispatch(toggle());
     dispatch(inactive());
   };
   return (
@@ -40,6 +45,10 @@ function HamburgerMenu() {
           </NavLink>
           <NavLink onClick={() => dispatch(inactive())} to='/add-place'>
             Add place
+          </NavLink>
+          <NavLink onClick={handleYourPlaces} to='/'>
+            Your Places
+            {toggleState ? <span style={{ color: "#ff6a75" }}> ✔</span> : ""}
           </NavLink>
           <NavLink style={{ color: "#ff6a75" }} to='/'>
             Plan a Route
@@ -58,6 +67,9 @@ function HamburgerMenu() {
           </NavLink>
           <NavLink onClick={() => dispatch(inactive())} to='/signin'>
             Add place
+          </NavLink>
+          <NavLink onClick={() => dispatch(inactive())} to='/signin'>
+            Your Places
           </NavLink>
           <NavLink
             style={{ color: "#ff6a75" }}

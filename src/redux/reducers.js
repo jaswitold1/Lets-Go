@@ -38,7 +38,7 @@ export const toggleReducer = (state = toggleState, action) => {
   switch (action.type) {
     case "TOGGLE":
       return {
-        toggle: !state.toggleData,
+        toggleData: !state.toggleData,
       };
 
     default:
