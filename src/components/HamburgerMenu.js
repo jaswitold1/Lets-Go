@@ -26,6 +26,9 @@ function HamburgerMenu() {
   const handleLogout = () => {
     firebase.auth().signOut();
     dispatch(inactive());
+    if (toggleState == true) {
+      dispatch(toggle());
+    }
   };
   const handleYourPlaces = () => {
     dispatch(toggle());

@@ -42,8 +42,8 @@ export default function Logowanie() {
           <button className={"authBtn"} onClick={handleLogin}>
             Log In
           </button>
+          <div>{error}</div>
         </form>
-        <div>{error}</div>
       </div>
     </div>
   );
