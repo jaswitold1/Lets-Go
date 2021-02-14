@@ -47,6 +47,7 @@
     border-radius: 10px;
     box-shadow: 10px 10px 10px grey;
     .placeContainer {
+      position: relative;
       margin-left: 3%;
       display: flex;
       flex-direction: column;
@@ -72,6 +73,16 @@
       border-radius: 10px 0 0 10px;
       width: 160px;
       object-fit: cover;
+    }
+    .deleteBtn {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      background-color: white;
+      border: none;
+      border: 2px solid #ff6a75;
+      border-radius: 5px;
+      padding: 3px 6px 3px 6px;
     }
   }
 }

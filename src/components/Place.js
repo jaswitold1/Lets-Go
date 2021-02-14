@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { hover, hoverLat, hoverLng, hoverPlaceName } from "../redux/actions";
-
+import firebase from "firebase";
 function Place({
   photoName,
   photos,
@@ -9,7 +9,15 @@ function Place({
   placeDesc,
   placeLat,
   placeLng,
+  uid,
+  placeID,
 }) {
+  let currentUser = "";
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      currentUser = firebase.auth().currentUser;
+    }
+  });
   const dispatch = useDispatch();
   const handleHover = (event) => {
     event.stopPropagation();
@@ -18,6 +26,16 @@ function Place({
     dispatch(hoverLng(placeLng));
     dispatch(hoverPlaceName(placeName));
   };
+
+  //deleting
+
+  const handleDelete = (event) => {
+    firebase
+      .database()
+      .ref(`places/${currentUser.uid}/${event.target.id}`)
+      .remove();
+  };
+
   return (
     <div onMouseOver={handleHover} id={photoName} className='place'>
       <img
@@ -40,6 +58,13 @@ function Place({
         <span id={photoName} className='placeRating'>
           ☆☆☆☆☆
         </span>
+        {uid !== currentUser.uid ? (
+          <button id={placeID} onClick={handleDelete} className='deleteBtn'>
+            Delete
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

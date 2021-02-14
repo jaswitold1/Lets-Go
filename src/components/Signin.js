@@ -51,9 +51,9 @@ export default function Rejestracja() {
               Passwords do not match
             </button>
           )}
+          <div>{error}</div>
         </form>
       </div>
-      <div>{error}</div>
     </div>
   );
 }

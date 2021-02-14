@@ -35,36 +35,31 @@ function Sidebar() {
 
   // converting all user's data to array of all places
   let placeArr = [];
-
   Object.entries(data).forEach((el) => {
     Object.entries(el[1]).forEach((element) => {
-      placeArr.push(element[1]);
+      placeArr.push(element);
     });
   });
+
   //yourPlaces - placeArr for logged user only
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // Object.entries(data).forEach((el) => {
-        //   Object.entries(el[1]).forEach((element) => {
-        //     placeArr.push(element[1]);
-        //   });
-        // });
-        setPlaceUserArr(placeArr.filter((el) => el.uid == user.uid));
+        setPlaceUserArr(placeArr.filter((el) => el[1].uid == user.uid));
       }
     });
   }, [data]);
-  console.log(placeUserArr);
   //search
   let placeSearchArr = [];
   toggleState
     ? (placeSearchArr = placeUserArr.filter((el) =>
-        el.placeName.toLowerCase().includes(search.toLowerCase())
+        el[1].placeName.toLowerCase().includes(search.toLowerCase())
       ))
     : (placeSearchArr = placeArr.filter((el) =>
-        el.placeName.toLowerCase().includes(search.toLowerCase())
+        el[1].placeName.toLowerCase().includes(search.toLowerCase())
       ));
 
+  //add guide red color how to use app
   return (
     <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
       <div className='sidebarNavi'>
@@ -72,47 +67,74 @@ function Sidebar() {
           <Search search={search} handleSearch={handleSearch} />
         </div>
       </div>
-      {search
-        ? placeSearchArr.map((el, i) => {
+      {search ? (
+        toggleState ? (
+          placeSearchArr.map((el, i) => {
             return (
               <Place
                 photos={photos}
-                photoName={el.photoName}
-                placeName={el.placeName}
-                placeDesc={el.placeDesc}
-                placeLat={el.placeLat}
-                placeLng={el.placeLng}
+                photoName={el[1].photoName}
+                placeName={el[1].placeName}
+                placeDesc={el[1].placeDesc}
+                placeLat={el[1].placeLat}
+                placeLng={el[1].placeLng}
+                uid={el[1].uid}
+                placeID={el[0]}
                 key={i}
               />
             );
           })
-        : toggleState
-        ? placeUserArr.map((el, i) => {
+        ) : (
+          placeSearchArr.map((el, i) => {
             return (
               <Place
                 photos={photos}
-                photoName={el.photoName}
-                placeName={el.placeName}
-                placeDesc={el.placeDesc}
-                placeLat={el.placeLat}
-                placeLng={el.placeLng}
+                photoName={el[1].photoName}
+                placeName={el[1].placeName}
+                placeDesc={el[1].placeDesc}
+                placeLat={el[1].placeLat}
+                placeLng={el[1].placeLng}
+                placeID={el[0]}
                 key={i}
               />
             );
           })
-        : placeArr.map((el, i) => {
+        )
+      ) : toggleState ? (
+        placeUserArr.length > 0 ? (
+          placeUserArr.map((el, i) => {
             return (
               <Place
                 photos={photos}
-                photoName={el.photoName}
-                placeName={el.placeName}
-                placeDesc={el.placeDesc}
-                placeLat={el.placeLat}
-                placeLng={el.placeLng}
+                photoName={el[1].photoName}
+                placeName={el[1].placeName}
+                placeDesc={el[1].placeDesc}
+                placeLat={el[1].placeLat}
+                placeLng={el[1].placeLng}
+                uid={el[1].uid}
+                placeID={el[0]}
                 key={i}
               />
             );
-          })}
+          })
+        ) : (
+          <span>Add places to see Your places listed here ;)</span>
+        )
+      ) : (
+        placeArr.map((el, i) => {
+          return (
+            <Place
+              photos={photos}
+              photoName={el[1].photoName}
+              placeName={el[1].placeName}
+              placeDesc={el[1].placeDesc}
+              placeLat={el[1].placeLat}
+              placeLng={el[1].placeLng}
+              key={i}
+            />
+          );
+        })
+      )}
     </div>
   );
 }
