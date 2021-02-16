@@ -1,5 +1,6 @@
 import React from "react";
 import LowerMenu from "./LowerMenu";
+import NaviMenu from "./NaviMenu";
 
 //redux
 import { active, inactive } from "../redux/actions";
@@ -29,15 +30,18 @@ function Navi() {
         <Link onClick={() => dispatch(inactive())} to='/' className='logo'>
           {/* <img alt='logo' src={logo} /> */}
         </Link>
-        <button
-          onClick={handleActive}
-          className={"hamburger hamburger--vortex " + isActive}
-          type='button'
-        >
-          <span className='hamburger-box'>
-            <span className='hamburger-inner'></span>
-          </span>
-        </button>
+        <NaviMenu />
+        <div className='hamburgerBtn'>
+          <button
+            onClick={handleActive}
+            className={"hamburger hamburger--vortex " + isActive}
+            type='button'
+          >
+            <span className='hamburger-box'>
+              <span className='hamburger-inner'></span>
+            </span>
+          </button>
+        </div>
       </div>
       <LowerMenu />
     </div>

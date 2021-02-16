@@ -91,9 +91,23 @@
     }
   }
 }
+.naviMenu {
+  display: none;
+}
 
-@media only screen and (min-width: 1024px) {
-  .upperNavi {
+@media only screen and (min-width: 1020px) {
+  .App {
+    .navi {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  .naviMenu {
+    display: flex;
+    width: 80vw;
+  }
+  .hamburgerBtn {
+    display: none;
   }
 }
-// stworzyc menu gora i displayowac none albo nie w zaleznosci od width
