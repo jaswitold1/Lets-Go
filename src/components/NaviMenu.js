@@ -51,7 +51,6 @@ function NaviMenu() {
           </NavLink>
           <NavLink to='/'>Radius</NavLink>
           <NavLink to='/'>Categories</NavLink>
-          <NavLink to='/add-place'>Add place</NavLink>
         </>
       ) : (
         //   NOT LOGGED IN !!!!!!!
