@@ -23,3 +23,17 @@
     width: 16rem;
   }
 }
+
+@media only screen and (min-width: 1020px) {
+  #mapid {
+    height: 88vh;
+
+    position: fixed;
+    width: calc(100vw - 28rem);
+    top: 12vh;
+
+    left: 28rem;
+    filter: grayscale(80%);
+    transition: 0.5s;
+  }
+}

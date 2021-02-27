@@ -14,13 +14,11 @@ import "./components/src/L.Control.MapCenterCoord.css";
 //router
 import { BrowserRouter, Route } from "react-router-dom";
 
-// div100vh iOS Safari toolbars overlapping fix
-import Div100vh from "react-div-100vh";
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Div100vh className='App'>
+        <div className='App'>
           <Navi />
           <HamburgerMenu />
 
@@ -29,7 +27,7 @@ function App() {
           <Route exact path='/signin' component={Signin} />
           <Route exact path='/logout' component={Logout} />
           <Route exact path='/add-place' component={AddLocation} />
-        </Div100vh>
+        </div>
       </BrowserRouter>
     </>
   );
