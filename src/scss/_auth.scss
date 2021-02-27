@@ -3,8 +3,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   background-image: url("https://loremflickr.com/g/1080/1920/city");
@@ -39,6 +39,7 @@
     input:focus,
     textarea:focus {
       outline: none;
+      background-color: #ff6a75;
     }
     * {
       margin-bottom: 1rem;

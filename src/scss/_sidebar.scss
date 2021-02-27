@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   .sidebarNavi {
-    background-color: #1d1d1d;
+    background-color: white;
     width: 100vw;
     height: 2rem;
     position: fixed;
@@ -29,7 +29,7 @@
         font-size: 2rem;
 
         input {
-          background-color: #1d1d1d;
+          background-color: white;
           border: none;
           border-bottom: 1px solid #ff6a75;
         }
@@ -137,8 +137,7 @@
     }
 
     .place {
-      z-index: 2;
-      transition: 0.5s;
+      transition: 0.2s;
       display: flex;
       height: 150px;
       background-color: white;
@@ -185,8 +184,8 @@
       }
     }
     .place:hover {
-      transition: 0.5s;
-      margin-left: 50px;
+      transition: 0.2s;
+      margin-left: 30px;
     }
   }
 }
