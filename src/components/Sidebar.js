@@ -23,7 +23,7 @@ function Sidebar() {
     dispatch(fetchData());
     setTimeout(() => {
       dispatch(fetchPhotos());
-    }, 1000);
+    }, 1500);
   }, [dispatch]);
   //useSelector
   const toggleState = useSelector((state) => state.toggleState.toggleData);
@@ -61,7 +61,7 @@ function Sidebar() {
 
   //add guide red color how to use app
   return (
-    <div style={{ filter: hamburgerLightsOut }} className='sidebar'>
+    <div className='sidebar' style={{ filter: hamburgerLightsOut }}>
       <div className='sidebarNavi'>
         <div className='sidebarNaviContainer'>
           <Search search={search} handleSearch={handleSearch} />
