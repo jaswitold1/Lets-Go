@@ -1,5 +1,6 @@
 const hamburgerState = {
   hamburgerWidth: "translateX(-100%)",
+  hamburgerLightsOut: "brightness(100%)",
 };
 const authState = {};
 const dataState = {
@@ -32,7 +33,6 @@ export const pinLocationReducer = (state = pinLocationState, action) => {
       return state;
   }
 };
-//naprawic ten reducer
 
 export const toggleReducer = (state = toggleState, action) => {
   switch (action.type) {

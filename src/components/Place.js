@@ -49,7 +49,7 @@ function Place({
         </h1>
         <p id={photoName} className='placeDesc'>
           {placeDesc.length >= 30
-            ? placeDesc.substring(0, 30) + "..."
+            ? placeDesc.substring(0, 28) + "..."
             : placeDesc}
         </p>
         <span id={photoName} className='placeCategory'>

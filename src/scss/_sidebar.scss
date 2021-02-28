@@ -93,7 +93,7 @@
 
 @media only screen and (min-width: 1020px) {
   .sidebar {
-    height: 82vh;
+    height: 88vh;
 
     position: fixed;
     bottom: 0;
@@ -109,13 +109,15 @@
       background-color: #1d1d1d;
       width: 28rem;
       height: 6vh;
-      position: fixed;
-      bottom: 82vh;
+      position: sticky;
+      top: 0;
+      bottom: auto;
       left: 0;
       box-shadow: 0 0 5px 2px gray;
       display: flex;
       align-items: center;
       justify-content: center;
+
       .sidebarNaviContainer {
         margin-left: 1rem;
         .search {
@@ -123,11 +125,13 @@
           align-items: center;
           color: #ff6a75;
           font-size: 2rem;
+          padding: 1rem 0 1rem 0;
 
           input {
             border: none;
             border-bottom: 1px solid #ff6a75;
             background-color: #1d1d1d;
+            color: white;
           }
           input:focus {
             outline: none;
@@ -159,8 +163,8 @@
           width: 250px;
         }
         p {
-          color: grey;
           font-weight: lighter;
+          color: #1d1d1d;
         }
         .placeCategory {
           font-weight: lighter;
