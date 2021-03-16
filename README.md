@@ -11,7 +11,7 @@ Main functionalities are:
 
 <ul>
   <li>Locating the user</li>
-  <li>Sign up and Log in with credentials through Firebase</li>
+  <li>Sign up and Log in with validation/error handling by FirebaseAuth</li>
   <li>Adjusting position on map and Adding a place with photo and description to map with marker</li>
   <li>Map panning to a place location on hover</li>
   <li>Managing places user has added with "Your places" tab</li>
