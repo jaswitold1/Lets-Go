@@ -120,7 +120,8 @@
       transition: 0.5s;
     }
     a:hover {
-      box-shadow: inset 0 15px 10px -10px #ff6a75;
+      outline: 1px solid #ff6a75;
+//       box-shadow: inset 0 15px 10px -10px #ff6a75;
       transition: 0.5s;
     }
   }
